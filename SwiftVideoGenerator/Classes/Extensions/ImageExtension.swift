@@ -18,8 +18,12 @@ extension UIImage {
         
         var scaledImageRect: CGRect = CGRect.zero
         
-        scaledImageRect.size.width = 368
-        scaledImageRect.size.height = 216
+        let aspectWidth: CGFloat = newSize.width / size.width
+        let aspectHeight: CGFloat = newSize.height / size.height
+        let aspectRatio: CGFloat = min(aspectWidth, aspectHeight)
+        
+        scaledImageRect.size.width = size.width * aspectRatio
+        scaledImageRect.size.height = size.height * aspectRatio
         
         scaledImageRect.origin.x = (newSize.width - scaledImageRect.size.width) / 2.0
         scaledImageRect.origin.y = (newSize.height - scaledImageRect.size.height) / 2.0
@@ -40,30 +44,30 @@ extension UIImage {
     ///
     /// - Returns: a size fit for video
     func getSizeForVideo() -> CGSize {
-        //    let scale = UIScreen.main.scale
-        //    var imageWidth = 16 * ((size.width / scale) / 16).rounded(.awayFromZero)
-        //    var imageHeight = 16 * ((size.height / scale) / 16).rounded(.awayFromZero)
-        //    var ratio: CGFloat!
-        //
-        //    if imageWidth > 1400 {
-        //      ratio = 1400 / imageWidth
-        //      imageWidth = 16 * (imageWidth / 16).rounded(.towardZero) * ratio
-        //      imageHeight = 16 * (imageHeight / 16).rounded(.towardZero) * ratio
-        //    }
-        //
-        //    if imageWidth < 800 {
-        //      ratio = 800 / imageWidth
-        //      imageWidth = 16 * (imageWidth / 16).rounded(.awayFromZero) * ratio
-        //      imageHeight = 16 * (imageHeight / 16).rounded(.awayFromZero) * ratio
-        //    }
-        //
-        //    if imageHeight > 1200 {
-        //      ratio = 1200 / imageHeight
-        //      imageWidth = 16 * (imageWidth / 16).rounded(.towardZero) * ratio
-        //      imageHeight = 16 * (imageHeight / 16).rounded(.towardZero) * ratio
-        //    }
-        //
-        return CGSize(width: 368, height: 216)
+        let scale = UIScreen.main.scale
+        var imageWidth = 16 * ((size.width / scale) / 16).rounded(.awayFromZero)
+        var imageHeight = 16 * ((size.height / scale) / 16).rounded(.awayFromZero)
+        var ratio: CGFloat!
+        
+        if imageWidth > 1400 {
+            ratio = 1400 / imageWidth
+            imageWidth = 16 * (imageWidth / 16).rounded(.towardZero) * ratio
+            imageHeight = 16 * (imageHeight / 16).rounded(.towardZero) * ratio
+        }
+        
+        if imageWidth < 800 {
+            ratio = 800 / imageWidth
+            imageWidth = 16 * (imageWidth / 16).rounded(.awayFromZero) * ratio
+            imageHeight = 16 * (imageHeight / 16).rounded(.awayFromZero) * ratio
+        }
+        
+        if imageHeight > 1200 {
+            ratio = 1200 / imageHeight
+            imageWidth = 16 * (imageWidth / 16).rounded(.towardZero) * ratio
+            imageHeight = 16 * (imageHeight / 16).rounded(.towardZero) * ratio
+        }
+        
+        return CGSize(width: imageWidth, height: imageHeight)
     }
     
     
@@ -72,7 +76,8 @@ extension UIImage {
     /// - Returns: the resized image
     func resizeImageToVideoSize() -> UIImage? {
         let scale = UIScreen.main.scale
-        let imageRect = CGRect(x: 0, y: 0, width: 368, height: 216)
+        let videoImageSize = getSizeForVideo()
+        let imageRect = CGRect(x: 0, y: 0, width: videoImageSize.width * scale, height: videoImageSize.height * scale)
         
         UIGraphicsBeginImageContextWithOptions(CGSize(width: imageRect.width, height: imageRect.height), false, scale)
         if let _ = UIGraphicsGetCurrentContext() {
@@ -89,4 +94,3 @@ extension UIImage {
         }
     }
 }
-
