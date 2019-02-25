@@ -623,7 +623,7 @@ public class VideoGenerator: NSObject {
             audioDurations = [Double](repeating: duration / Double(images.count), count: images.count)
         }
         
-        images = images.compactMap({ $0.scaleImageToSize(newSize: CGSize(width: scaleWidth, height: scaleHeight)) })
+        images = images.compactMap({ $0.scaleImageToSize(newSize: CGSize(width: scaleWidth!, height: scaleHeight!)) })
 //        if let _scaleWidth = scaleWidth {
 //            images = images.compactMap({ $0.scaleImageToSize(newSize: CGSize(width: _scaleWidth, height: _scaleWidth)) })
 //        }
