@@ -81,7 +81,7 @@ public class VideoGenerator: NSObject {
 //        if let firstImage = VideoGenerator.current.images.first {
 //            VideoGenerator.current.minSize = firstImage.size
 //        }
-        VideoGenerator.current.minSize = CGSize(width: 368, height: 216)
+        VideoGenerator.current.minSize = CGSize(width: 1104, height: 648)
         
         let inputSize = VideoGenerator.current.minSize
         let outputSize = VideoGenerator.current.minSize
