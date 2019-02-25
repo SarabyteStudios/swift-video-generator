@@ -45,7 +45,8 @@ public class VideoGenerator: NSObject {
     
     /// public property to set a width to scale the image to before generating a video (used only with .single type video generation; preferred scale: 800/1200)
     open var scaleWidth: CGFloat?
-    
+    open var scaleHeight: CGFloat?
+
     /// public property to indicate if the images fed into the generator should be resized to appropriate video ratio 1200 x 1920
     open var shouldOptimiseImageForVideo: Bool = true
     
@@ -622,9 +623,10 @@ public class VideoGenerator: NSObject {
             audioDurations = [Double](repeating: duration / Double(images.count), count: images.count)
         }
         
-        if let _scaleWidth = scaleWidth {
-            images = images.compactMap({ $0.scaleImageToSize(newSize: CGSize(width: _scaleWidth, height: _scaleWidth)) })
-        }
+        images = images.compactMap({ $0.scaleImageToSize(newSize: CGSize(width: scaleWidth, height: scaleHeight)) })
+//        if let _scaleWidth = scaleWidth {
+//            images = images.compactMap({ $0.scaleImageToSize(newSize: CGSize(width: _scaleWidth, height: _scaleWidth)) })
+//        }
     }
     
     // MARK: --------------------------------------------------------------- Override methods ---------------------------------------------------------------

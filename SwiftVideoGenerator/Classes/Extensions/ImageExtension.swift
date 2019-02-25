@@ -56,8 +56,8 @@ extension UIImage {
         }
         
         if imageWidth < 800 {
-//            ratio = 800 / imageWidth
-            ratio = 1.70
+            ratio = 800 / imageWidth
+//            ratio = 1.70
             imageWidth = 16 * (imageWidth / 16).rounded(.awayFromZero) * ratio
             imageHeight = 16 * (imageHeight / 16).rounded(.awayFromZero) * ratio
         }
