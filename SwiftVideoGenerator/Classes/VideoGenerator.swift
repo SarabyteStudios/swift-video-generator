@@ -616,8 +616,8 @@ public class VideoGenerator: NSObject {
             }
         }
         
-        let minVideoDuration = Double(CMTime(seconds: minSingleVideoDuration, preferredTimescale: 1).seconds)
-        duration = max((audioURLs.isEmpty ? videoDurationInSeconds : _duration), minVideoDuration)
+//        let minVideoDuration = Double(CMTime(seconds: minSingleVideoDuration, preferredTimescale: 1).seconds)
+        duration = max((audioURLs.isEmpty ? videoDurationInSeconds : _duration), 1.0)
         
         if audioURLs.isEmpty {
             audioDurations = [Double](repeating: duration / Double(images.count), count: images.count)
