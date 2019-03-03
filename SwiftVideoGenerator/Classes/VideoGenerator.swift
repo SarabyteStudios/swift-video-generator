@@ -617,11 +617,12 @@ public class VideoGenerator: NSObject {
         }
         
 //        let minVideoDuration = Double(CMTime(seconds: minSingleVideoDuration, preferredTimescale: 1).seconds)
-        duration = max((audioURLs.isEmpty ? videoDurationInSeconds : _duration), 1.0)
+        duration = max(videoDurationInSeconds, 1.0)
         
-        if audioURLs.isEmpty {
-            audioDurations = [Double](repeating: duration / Double(images.count), count: images.count)
-        }
+//        if audioURLs.isEmpty {
+//            audioDurations = [Double](repeating: duration / Double(images.count), count: images.count)
+//        }
+        audioDurations = [duration]
         
         images = images.compactMap({ $0.scaleImageToSize(newSize: CGSize(width: scaleWidth!, height: scaleHeight!)) })
 //        if let _scaleWidth = scaleWidth {
