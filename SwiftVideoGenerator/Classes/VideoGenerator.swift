@@ -148,7 +148,8 @@ public class VideoGenerator: NSObject {
                         var elapsedTime: Double = 0
                         
                         /// calculate the frame duration by dividing the full video duration by the number of images and rounding up the number
-                        let frameDuration = CMTime(seconds: ceil(Double(VideoGenerator.current.duration / Double(VideoGenerator.current.images.count))), preferredTimescale: 1)
+//                        let frameDuration = CMTime(seconds: ceil(Double(VideoGenerator.current.duration / Double(VideoGenerator.current.images.count))), preferredTimescale: 1)
+                         let frameDuration = CMTime(seconds: Double(VideoGenerator.current.duration), preferredTimescale: 1)
                         let currentProgress = Progress(totalUnitCount: Int64(VideoGenerator.current.images.count))
                         
                         /// declare a temporary array to hold all as of yet unused images
