@@ -234,7 +234,7 @@ public class VideoGenerator: NSObject {
                                     let audioDuration2 = asset2.duration
                                     let audioDurationSeconds2 = CMTimeGetSeconds(audioDuration2)
                                     print("Duration after: ", audioDurationSeconds2)
-                                    print("finished")
+                                    print("finishedddd")
                                     success(newPath)
                                 }
                             } else {
