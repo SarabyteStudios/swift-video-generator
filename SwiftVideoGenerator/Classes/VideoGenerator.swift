@@ -239,17 +239,18 @@ public class VideoGenerator: NSObject {
                                 }
                             } else {
                                 /// if the writing is successfull, go on to merge the video with the audio files
-                                let asset = AVURLAsset(url: videoOutputURL, options: nil)
-                                let audioDuration = asset.duration
-                                let audioDurationSeconds = CMTimeGetSeconds(audioDuration)
-                                print("Duration before mergin with aud: ", audioDurationSeconds)
+                             
                                 
                                 VideoGenerator.current.mergeAudio(withVideoURL: videoOutputURL, success: { (videoURL) in
-                                    print("finished")
                                     let asset = AVURLAsset(url: videoOutputURL, options: nil)
                                     let audioDuration = asset.duration
                                     let audioDurationSeconds = CMTimeGetSeconds(audioDuration)
-                                    print("Duration after mergin with aud: ", audioDurationSeconds)
+                                    print("Duration before mergin with aud: ", audioDurationSeconds)
+                                    print("finished merge audio")
+                                    let asset2 = AVURLAsset(url: videoOutputURL, options: nil)
+                                    let audioDuration2 = asset2.duration
+                                    let audioDurationSeconds2 = CMTimeGetSeconds(audioDuration2)
+                                    print("Duration after mergin with aud: ", audioDurationSeconds2)
                                     success(videoURL)
                                 }, failure: { (error) in
                                     failure(error)
