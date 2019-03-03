@@ -225,7 +225,15 @@ public class VideoGenerator: NSObject {
                                     } catch {
                                         failure(error)
                                     }
+                                    let asset = AVURLAsset(url: URL(fileURLWithPath: path), options: nil)
+                                    let audioDuration = asset.duration
+                                    let audioDurationSeconds = CMTimeGetSeconds(audioDuration)
+                                    print("Duration before: ", audioDurationSeconds)
                                     
+                                    let asset2 = AVURLAsset(url: newPath, options: nil)
+                                    let audioDuration2 = asset2.duration
+                                    let audioDurationSeconds2 = CMTimeGetSeconds(audioDuration2)
+                                    print("Duration after: ", audioDurationSeconds2)
                                     print("finished")
                                     success(newPath)
                                 }
