@@ -710,7 +710,8 @@ public class VideoGenerator: NSObject {
                     }
                 }
                 
-                duration = duration + (maxVideoLengthInSeconds != nil ? audioDuration : audioAsset.duration)
+//                duration = duration + (maxVideoLengthInSeconds != nil ? audioDuration : audioAsset.duration)
+                  duration = audioAsset.duration
             }
             
             /// check if the documents folder is available
