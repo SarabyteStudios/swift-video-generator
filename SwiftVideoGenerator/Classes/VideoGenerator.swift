@@ -361,7 +361,7 @@ public class VideoGenerator: NSObject {
                             }
                             
                         default:
-                            print("finished")
+                            print("finished merge movies")
                             success(completeMoviePath)
                         }
                     })
@@ -454,7 +454,7 @@ public class VideoGenerator: NSObject {
                         }
                         
                     default:
-                        print("finished")
+                        print("finished split")
                         success(outputURL)
                     }
                 })
@@ -528,7 +528,7 @@ public class VideoGenerator: NSObject {
                         }
                         
                     default:
-                        print("finished")
+                        print("finished merge of audio and video")
                         success(outputURL)
                     }
                 })
